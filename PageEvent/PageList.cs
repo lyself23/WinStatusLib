@@ -14,6 +14,8 @@ namespace WinStatusLib.PageEvent
             public string Title { get; set; }               //화면제목
             public bool ShowBackButton { get; set; }        //뒤로가기 버튼 표기여부
             public bool ShowNextButton { get; set; }        //다음으로가기 버튼 표기여부
+            public bool ShowRefreshButton { get; set; }     //새로고침 버튼 표기 여부
+            public bool ShowSetupButton { get; set; }       //설정 버튼 표기 여부
             public Dictionary<string, string> LastQueryParam { get; set; }  //마지막으로 저장된 쿼리 매개변수
         }
 
@@ -28,9 +30,9 @@ namespace WinStatusLib.PageEvent
             if (pageList.Count > 0) return;  
         }
 
-        public PageList(string pageName, string title, bool showBackButton, bool showNextButton)
+        public PageList(string pageName, string title, bool showBackButton, bool showNextButton, bool showRefreshButton, bool showSetupButton)
         {
-            pageList.Add(new Page { PageName = pageName, Title = title, ShowBackButton = showBackButton, ShowNextButton = showNextButton });
+            pageList.Add(new Page { PageName = pageName, Title = title, ShowBackButton = showBackButton, ShowNextButton = showNextButton, ShowRefreshButton = showRefreshButton, ShowSetupButton = showSetupButton });
         }
 
         /// <summary>
@@ -92,6 +94,28 @@ namespace WinStatusLib.PageEvent
         {
             Page list = GetPageList(pageName);
             return list.ShowNextButton;
+        }
+
+        /// <summary>
+        /// 화면 내 새로고침 버튼 표기여부 
+        /// </summary>
+        /// <param name="pageName">화면명</param>
+        /// <returns>새로고침 버튼 표기 여부</returns>
+        public bool GetShowRefreshButton(string pageName)
+        {
+            Page list = GetPageList(pageName);
+            return list.ShowRefreshButton;
+        }
+
+        /// <summary>
+        /// 화면 내 설정 버튼 표기여부 
+        /// </summary>
+        /// <param name="pageName">화면명</param>
+        /// <returns>설정 버튼 표기 여부</returns>
+        public bool GetShowSetupButton(string pageName)
+        {
+            Page list = GetPageList(pageName);
+            return list.ShowSetupButton;
         }
 
         /// <summary>

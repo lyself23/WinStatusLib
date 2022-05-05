@@ -15,6 +15,8 @@ namespace WinStatusLib.PageEvent
         public string Title { get; set; }                       //화면제목
         public bool ShowBackButton { get; set; }                //뒤로가기 버튼 표기 여부
         public bool ShowNextButton { get; set; }                //다음으로가기 버튼 표기 여부
+        public bool ShowRefreshButton { get; set; }             //새로고침 버튼 표기 여부
+        public bool ShowSetupButton { get; set; }               //설정 버튼 표기 여부
         public Dictionary<string, string> Param { get; set; }   //마지막으로 저장된 매개변수
         public PageEventArgs()
         {
@@ -50,6 +52,8 @@ namespace WinStatusLib.PageEvent
                 args.Title = page.GetPageTitle(pageName);
                 args.ShowBackButton = page.GetShowBackButton(pageName);
                 args.ShowNextButton = page.GetShowNextButton(pageName);
+                args.ShowRefreshButton = page.GetShowRefreshButton(pageName);
+                args.ShowSetupButton = page.GetShowSetupButton(pageName);
                 args.Param = page.GetPageLastQueryParam(pageName);
 
                 PageMove(this, args);
@@ -77,6 +81,8 @@ namespace WinStatusLib.PageEvent
                 args.Title = list.Title;
                 args.ShowBackButton = list.ShowBackButton;
                 args.ShowNextButton = list.ShowNextButton;
+                args.ShowRefreshButton = list.ShowRefreshButton;
+                args.ShowSetupButton = list.ShowSetupButton;
                 args.Param = list.LastQueryParam;
 
                 PageMove(this, args);
